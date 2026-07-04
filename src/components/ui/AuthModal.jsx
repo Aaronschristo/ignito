@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Rocket, Eye, EyeOff, Loader } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 
-function InputField({ id, label, type = 'text', value, onChange, placeholder, required }) {
+function InputField({ id, label, type = 'text', value, onChange, placeholder, required, autoComplete, invalid, describedBy }) {
   const [show, setShow] = useState(false)
   const isPassword = type === 'password'
   return (
@@ -24,6 +24,9 @@ function InputField({ id, label, type = 'text', value, onChange, placeholder, re
           onChange={onChange}
           placeholder={placeholder}
           required={required}
+          autoComplete={autoComplete}
+          aria-invalid={invalid || undefined}
+          aria-describedby={describedBy}
           className="w-full px-4 py-3 rounded-xl bg-space-surface border border-space-border text-text-primary font-body text-sm placeholder:text-text-faint focus:outline-none focus:border-nebula-green/60 focus:ring-1 focus:ring-nebula-green/40 transition-all pr-10"
         />
         {isPassword && (
@@ -42,11 +45,14 @@ function InputField({ id, label, type = 'text', value, onChange, placeholder, re
 
 export function AuthModal() {
   const { showAuth, authMode, closeAuth, login, register, openAuth } = useAuth()
-  const [form, setForm] = useState({ name: '', email: '', password: '' })
+  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   const isLogin = authMode === 'login'
+  const passwordsMismatch = !isLogin
+    && form.confirmPassword.length > 0
+    && form.password !== form.confirmPassword
 
   const set = (field) => (e) => {
     setForm(prev => ({ ...prev, [field]: e.target.value }))
@@ -55,15 +61,21 @@ export function AuthModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
     setError('')
+
+    if (!isLogin && form.password !== form.confirmPassword) {
+      setError('Passwords do not match.')
+      return
+    }
+
+    setLoading(true)
     try {
       if (isLogin) {
         await login({ email: form.email, password: form.password })
       } else {
         await register({ name: form.name, email: form.email, password: form.password })
       }
-      setForm({ name: '', email: '', password: '' })
+      setForm({ name: '', email: '', password: '', confirmPassword: '' })
     } catch (err) {
       setError(err.message)
     } finally {
@@ -153,6 +165,7 @@ export function AuthModal() {
                         onChange={set('name')}
                         placeholder="Your name"
                         required={!isLogin}
+                        autoComplete="name"
                       />
                     </motion.div>
                   )}
@@ -166,6 +179,7 @@ export function AuthModal() {
                   onChange={set('email')}
                   placeholder="you@email.com"
                   required
+                  autoComplete="email"
                 />
 
                 <InputField
@@ -176,7 +190,39 @@ export function AuthModal() {
                   onChange={set('password')}
                   placeholder="••••••••"
                   required
+                  autoComplete={isLogin ? 'current-password' : 'new-password'}
                 />
+
+                <AnimatePresence mode="wait">
+                  {!isLogin && (
+                    <motion.div
+                      key="confirm-password"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <InputField
+                        id="auth-confirm-password"
+                        label="Confirm Password"
+                        type="password"
+                        value={form.confirmPassword}
+                        onChange={set('confirmPassword')}
+                        placeholder="••••••••"
+                        required={!isLogin}
+                        autoComplete="new-password"
+                        invalid={passwordsMismatch}
+                        describedBy={passwordsMismatch ? 'password-match-error' : undefined}
+                      />
+                      {passwordsMismatch && (
+                        <p id="password-match-error" className="mt-1.5 font-body text-xs text-ignition-flame" role="alert">
+                          Passwords do not match.
+                        </p>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {error && (
                   <p className="font-body text-xs text-ignition-flame bg-ignition-flame/10 border border-ignition-flame/30 rounded-lg px-3 py-2">

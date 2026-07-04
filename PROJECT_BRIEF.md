@@ -229,6 +229,7 @@ Log every time this brief changes and why — this is what keeps it trustworthy 
 | 2026-07-04 | **Backend added**: Express.js API in `server/index.js` on port 3001. JWT auth (7-day expiry), bcryptjs hashing, JSON file store (`server/data.json`). Endpoints: register, login, get registrations, toggle event/competition registration. |
 | 2026-07-04 | **Color change**: Removed all `nebula-violet` (#8B5CF6) tokens — replaced with `nebula-green` (#22C55E / #16A34A). Single-token change in `theme.css` propagated everywhere. |
 | 2026-07-04 | **Auth added**: `AuthContext` + `AuthModal` (login/register tabs). Navbar shows Login button + user avatar dropdown. JWT stored in localStorage. |
+| 2026-07-04 | **Registration UX**: Added a register-only confirm-password field with live mismatch feedback and client-side submission validation. The confirmation value is not sent to the API. |
 | 2026-07-04 | **Registration functional**: Event and Competition cards now have Register buttons. Registered state stored per-user on backend. Cards turn green and show ✓ checkmark when registered. Unregistered users prompted to login. |
 | 2026-07-04 | **Documentation**: Overwrote the placeholder `README.md` with detailed step-by-step instructions for running the frontend and backend simultaneously, including Vercel deployment notes. |
 

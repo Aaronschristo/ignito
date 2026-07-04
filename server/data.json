@@ -77,6 +77,16 @@
         ],
         "competitions": []
       }
+    },
+    {
+      "id": "1783130958616",
+      "name": "Aaron S Christo",
+      "email": "aronschristo@gmail.com",
+      "password": "$2b$10$tyBfKIM6RGu5r5.H/2jSgeJ/cal8VeFS5PGHqOZQit.1LEpA7P3C.",
+      "registrations": {
+        "events": [],
+        "competitions": []
+      }
     }
   ]
 }
