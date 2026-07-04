@@ -38,9 +38,9 @@ export function getDifficultyColors(difficulty) {
       }
     case 'Pilot':
       return {
-        text: 'text-nebula-violet',
-        bg: 'bg-nebula-violet/10',
-        border: 'border-nebula-violet/30',
+        text: 'text-nebula-green',
+        bg: 'bg-nebula-green/10',
+        border: 'border-nebula-green/30',
       }
     case 'Cadet':
     default:
@@ -68,9 +68,9 @@ export function getCategoryColors(category) {
       border: 'border-nebula-blue/30',
     },
     Talk: {
-      text: 'text-nebula-violet',
-      bg: 'bg-nebula-violet/10',
-      border: 'border-nebula-violet/30',
+      text: 'text-nebula-green',
+      bg: 'bg-nebula-green/10',
+      border: 'border-nebula-green/30',
     },
     Competition: {
       text: 'text-ignition-glow',

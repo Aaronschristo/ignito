@@ -2,9 +2,12 @@
  * App.jsx
  * Root component — wires all sections together.
  * Ignition countdown loading state (T-minus 3…2…1…Liftoff).
+ * Wrapped in AuthProvider for auth state across all components.
  */
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { AuthProvider } from './context/AuthContext'
+import { AuthModal } from './components/ui/AuthModal'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
@@ -87,29 +90,34 @@ export default function App() {
   const [loaded, setLoaded] = useState(false)
 
   return (
-    <div className="min-h-screen bg-space-bg text-text-primary font-body">
-      <AnimatePresence mode="wait">
-        {!loaded ? (
-          <IgnitionLoader key="loader" onComplete={() => setLoaded(true)} />
-        ) : (
-          <motion.div
-            key="site"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Navbar />
-            <main>
-              <Hero />
-              <About />
-              <Events />
-              <Competitions />
-              <Contact />
-            </main>
-            <Footer />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen bg-space-bg text-text-primary font-body">
+        <AnimatePresence mode="wait">
+          {!loaded ? (
+            <IgnitionLoader key="loader" onComplete={() => setLoaded(true)} />
+          ) : (
+            <motion.div
+              key="site"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Navbar />
+              <main>
+                <Hero />
+                <About />
+                <Events />
+                <Competitions />
+                <Contact />
+              </main>
+              <Footer />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Auth modal — always rendered so it can appear over any page state */}
+        <AuthModal />
+      </div>
+    </AuthProvider>
   )
 }

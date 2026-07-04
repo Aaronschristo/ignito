@@ -8,7 +8,8 @@ import { cn } from '../../lib/utils'
 
 export function Card({ children, className = '', glowColor = 'violet', onClick }) {
   const glowMap = {
-    violet: 'hover:shadow-[0_0_40px_rgba(139,92,246,0.18)] hover:border-nebula-violet/40',
+    violet: 'hover:shadow-[0_0_40px_rgba(139,92,246,0.18)] hover:border-nebula-green/40',
+    green: 'hover:shadow-[0_0_40px_rgba(34,197,94,0.25)] hover:border-nebula-green/50',
     flame: 'hover:shadow-[0_0_40px_rgba(251,146,60,0.18)] hover:border-ignition-flame/40',
     blue: 'hover:shadow-[0_0_40px_rgba(34,211,238,0.18)] hover:border-nebula-blue/40',
   }

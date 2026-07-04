@@ -1,23 +1,66 @@
 /**
  * Competitions.jsx
  * Competition cards with prize, team-size, difficulty, deadline.
- * Loaded from data/competitions.json.
+ * "Register for Mission" button wired to AuthContext.
  */
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   Rocket, Bot, Cpu, Satellite, Telescope, Orbit, Radar,
-  Trophy, Users, Gauge, Timer,
+  Trophy, Users, Gauge, Timer, CheckCircle, Loader,
 } from 'lucide-react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
 import { Badge } from '../ui/Badge'
-import { Button } from '../ui/Button'
 import competitionsData from '../../data/competitions.json'
 import { formatDate, getDifficultyColors } from '../../lib/utils'
+import { useAuth } from '../../context/AuthContext'
 
 const ICON_MAP = { Rocket, Bot, Cpu, Satellite, Telescope, Orbit, Radar }
 
+function RegisterCompButton({ compId }) {
+  const { user, registrations, toggleCompetitionRegistration, openAuth } = useAuth()
+  const [loading, setLoading] = useState(false)
+  const isRegistered = registrations.competitions.includes(compId)
+
+  const handleClick = async () => {
+    if (!user) { openAuth('login'); return }
+    setLoading(true)
+    try { await toggleCompetitionRegistration(compId) }
+    finally { setLoading(false) }
+  }
+
+  return (
+    <motion.button
+      onClick={handleClick}
+      disabled={loading}
+      whileHover={{ scale: loading ? 1 : 1.03 }}
+      whileTap={{ scale: loading ? 1 : 0.97 }}
+      className={[
+        'w-full justify-center flex items-center gap-2 py-2.5 px-4 rounded-xl font-body text-xs font-semibold transition-all duration-200',
+        isRegistered
+          ? 'bg-nebula-green/15 text-nebula-green border border-nebula-green/30 hover:bg-nebula-green/8'
+          : 'bg-transparent text-nebula-green border border-nebula-green hover:bg-nebula-green/10 hover:shadow-[0_0_16px_rgba(34,197,94,0.2)]',
+        loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer',
+      ].join(' ')}
+    >
+      {loading ? (
+        <motion.span animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}>
+          <Loader size={14} />
+        </motion.span>
+      ) : isRegistered ? (
+        <CheckCircle size={14} strokeWidth={2.5} />
+      ) : (
+        <Rocket size={14} strokeWidth={2} />
+      )}
+      {loading ? 'Processing…' : isRegistered ? 'Mission Registered ✓' : 'Register for Mission'}
+    </motion.button>
+  )
+}
+
 export function Competitions() {
+  const { registrations } = useAuth()
+
   return (
     <section id="competitions" className="relative py-24 sm:py-32 bg-space-bg overflow-hidden">
       {/* Top accent */}
@@ -35,6 +78,7 @@ export function Competitions() {
           {competitionsData.map((comp, i) => {
             const Icon = ICON_MAP[comp.icon] ?? Rocket
             const diffColors = getDifficultyColors(comp.difficulty)
+            const isRegistered = registrations.competitions.includes(comp.id)
 
             return (
               <motion.div
@@ -44,11 +88,20 @@ export function Competitions() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
               >
-                <Card glowColor="flame" className="h-full flex flex-col">
+                <Card glowColor={isRegistered ? 'green' : 'flame'} className="h-full flex flex-col">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className="p-2.5 rounded-xl bg-ignition-flame/10 border border-ignition-flame/20">
-                      <Icon size={20} className="text-ignition-flame" strokeWidth={1.75} />
+                    <div className={[
+                      'p-2.5 rounded-xl border transition-colors',
+                      isRegistered
+                        ? 'bg-nebula-green/10 border-nebula-green/20'
+                        : 'bg-ignition-flame/10 border-ignition-flame/20',
+                    ].join(' ')}>
+                      <Icon
+                        size={20}
+                        className={isRegistered ? 'text-nebula-green' : 'text-ignition-flame'}
+                        strokeWidth={1.75}
+                      />
                     </div>
                     <Badge label={comp.difficulty} colorClasses={diffColors} />
                   </div>
@@ -62,11 +115,25 @@ export function Competitions() {
                   </p>
 
                   {/* Prize highlight */}
-                  <div className="flex items-center gap-2 mb-4 p-3 rounded-xl bg-ignition-flame/8 border border-ignition-flame/20">
-                    <Trophy size={16} className="text-ignition-flame" strokeWidth={2} />
+                  <div className={[
+                    'flex items-center gap-2 mb-4 p-3 rounded-xl border transition-colors',
+                    isRegistered
+                      ? 'bg-nebula-green/8 border-nebula-green/20'
+                      : 'bg-ignition-flame/8 border-ignition-flame/20',
+                  ].join(' ')}>
+                    <Trophy
+                      size={16}
+                      className={isRegistered ? 'text-nebula-green' : 'text-ignition-flame'}
+                      strokeWidth={2}
+                    />
                     <div>
                       <p className="font-body text-[10px] text-text-muted uppercase tracking-wider">Prize Pool</p>
-                      <p className="font-display text-xl font-bold text-ignition-flame">{comp.prize}</p>
+                      <p className={[
+                        'font-display text-xl font-bold',
+                        isRegistered ? 'text-nebula-green' : 'text-ignition-flame',
+                      ].join(' ')}>
+                        {comp.prize}
+                      </p>
                     </div>
                   </div>
 
@@ -89,10 +156,8 @@ export function Competitions() {
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <Button variant="secondary" className="w-full justify-center text-xs py-2.5">
-                    Register for Mission
-                  </Button>
+                  {/* Register CTA */}
+                  <RegisterCompButton compId={comp.id} />
                 </Card>
               </motion.div>
             )

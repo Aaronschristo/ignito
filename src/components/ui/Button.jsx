@@ -1,6 +1,6 @@
 /**
  * Button.jsx
- * Variants: primary (ignition-flame), secondary (nebula-violet outline), ghost
+ * Variants: primary (ignition-flame), secondary (nebula-green outline), ghost
  * Uses only named design tokens — no raw hex or arbitrary Tailwind values.
  */
 import { motion } from 'framer-motion'
@@ -14,16 +14,16 @@ const variants = {
   ].join(' '),
 
   secondary: [
-    'bg-transparent text-nebula-violet font-semibold',
-    'border border-nebula-violet',
-    'hover:bg-nebula-violet/10',
-    'hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]',
+    'bg-transparent text-nebula-green font-semibold',
+    'border border-nebula-green',
+    'hover:bg-nebula-green/10',
+    'hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]',
   ].join(' '),
 
   ghost: [
     'bg-transparent text-text-muted font-medium',
     'border border-space-border',
-    'hover:border-nebula-violet/50 hover:text-text-primary',
+    'hover:border-nebula-green/50 hover:text-text-primary',
   ].join(' '),
 }
 

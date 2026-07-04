@@ -1,26 +1,67 @@
 /**
  * Events.jsx
  * Filterable event cards loaded from data/events.json.
- * Filter bar + AnimatePresence layout animation on filter switch.
+ * Each card has a Register button wired to AuthContext.
  */
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Rocket, Bot, Cpu, Satellite, Telescope, Orbit, Radar,
-  Calendar, Clock, MapPin,
+  Calendar, Clock, MapPin, CheckCircle, Loader,
 } from 'lucide-react'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
 import { Badge } from '../ui/Badge'
 import eventsData from '../../data/events.json'
 import { formatDate, getCategoryColors } from '../../lib/utils'
+import { useAuth } from '../../context/AuthContext'
 
 const ICON_MAP = { Rocket, Bot, Cpu, Satellite, Telescope, Orbit, Radar }
-
 const CATEGORIES = ['All', ...new Set(eventsData.map((e) => e.category))]
+
+function RegisterEventButton({ eventId }) {
+  const { user, registrations, toggleEventRegistration, openAuth } = useAuth()
+  const [loading, setLoading] = useState(false)
+  const isRegistered = registrations.events.includes(eventId)
+
+  const handleClick = async () => {
+    if (!user) { openAuth('login'); return }
+    setLoading(true)
+    try { await toggleEventRegistration(eventId) }
+    finally { setLoading(false) }
+  }
+
+  return (
+    <motion.button
+      onClick={handleClick}
+      disabled={loading}
+      whileHover={{ scale: loading ? 1 : 1.03 }}
+      whileTap={{ scale: loading ? 1 : 0.97 }}
+      className={[
+        'w-full mt-3 py-2.5 rounded-xl font-body text-xs font-semibold flex items-center justify-center gap-2 transition-all duration-200',
+        isRegistered
+          ? 'bg-nebula-green/15 text-nebula-green border border-nebula-green/30 hover:bg-nebula-green/8'
+          : 'bg-nebula-blue/10 text-nebula-blue border border-nebula-blue/30 hover:bg-nebula-blue/15 hover:shadow-[0_0_12px_rgba(34,211,238,0.2)]',
+        loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer',
+      ].join(' ')}
+    >
+      {loading ? (
+        <motion.span animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}>
+          <Loader size={13} />
+        </motion.span>
+      ) : isRegistered ? (
+        <CheckCircle size={13} strokeWidth={2.5} />
+      ) : (
+        <Rocket size={13} strokeWidth={2} />
+      )}
+      {loading ? 'Processing…' : isRegistered ? 'Registered ✓' : 'Register for Event'}
+    </motion.button>
+  )
+}
 
 export function Events() {
   const [active, setActive] = useState('All')
+  const { registrations } = useAuth()
 
   const filtered =
     active === 'All' ? eventsData : eventsData.filter((e) => e.category === active)
@@ -65,12 +106,13 @@ export function Events() {
           })}
         </motion.div>
 
-        {/* Card grid with layout animation */}
+        {/* Card grid */}
         <motion.div layout className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((event, i) => {
               const Icon = ICON_MAP[event.icon] ?? Rocket
               const colors = getCategoryColors(event.category)
+              const isRegistered = registrations.events.includes(event.id)
 
               return (
                 <motion.div
@@ -81,12 +123,21 @@ export function Events() {
                   exit={{ opacity: 0, scale: 0.88 }}
                   transition={{ duration: 0.3, delay: i * 0.04 }}
                 >
-                  <Card glowColor="blue" className="h-full">
-                    <div className="flex flex-col gap-4 h-full">
+                  <Card glowColor={isRegistered ? 'green' : 'blue'} className="h-full flex flex-col">
+                    <div className="flex flex-col gap-4 flex-1">
                       {/* Icon + Category */}
                       <div className="flex items-start justify-between">
-                        <div className="p-2.5 rounded-xl bg-nebula-blue/10 border border-nebula-blue/20">
-                          <Icon size={20} className="text-nebula-blue" strokeWidth={1.75} />
+                        <div className={[
+                          'p-2.5 rounded-xl border transition-colors',
+                          isRegistered
+                            ? 'bg-nebula-green/10 border-nebula-green/20'
+                            : 'bg-nebula-blue/10 border-nebula-blue/20',
+                        ].join(' ')}>
+                          <Icon
+                            size={20}
+                            className={isRegistered ? 'text-nebula-green' : 'text-nebula-blue'}
+                            strokeWidth={1.75}
+                          />
                         </div>
                         <Badge label={event.category} colorClasses={colors} />
                       </div>
@@ -117,6 +168,9 @@ export function Events() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Register button */}
+                    <RegisterEventButton eventId={event.id} />
                   </Card>
                 </motion.div>
               )

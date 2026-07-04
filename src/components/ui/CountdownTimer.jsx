@@ -22,7 +22,7 @@ function Tile({ value, label }) {
         shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]
       ">
         {/* Glow */}
-        <div className="absolute inset-0 rounded-xl bg-nebula-violet/5 pointer-events-none" />
+        <div className="absolute inset-0 rounded-xl bg-nebula-green/5 pointer-events-none" />
         <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary tabular-nums">
           {padded}
         </span>

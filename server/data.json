@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "1783127879250",
+      "name": "Test User",
+      "email": "test@ignito.com",
+      "password": "$2b$10$u6FzGFjrCig1Xcb.6zUbHOydzUkhhQvyvlC3beLUhhUA05XV6aAqW",
+      "registrations": {
+        "events": [],
+        "competitions": []
+      }
+    },
+    {
+      "id": "1783127906305",
+      "name": "Test",
+      "email": "t@t.com",
+      "password": "$2b$10$O5H6RW7GqBcMsM82eyqrbeh0h7vVo0TTS867Cu9jsTc3sbqlk.qIG",
+      "registrations": {
+        "events": [],
+        "competitions": []
+      }
+    },
+    {
+      "id": "1783128307957",
+      "name": "Aaron",
+      "email": "aaron@test.com",
+      "password": "$2b$10$3hcGb6QIFRRaNeNL4X2TQ.rwufc8zQnt0nT9fQCb.Rk7GvuQpe6zu",
+      "registrations": {
+        "events": [],
+        "competitions": []
+      }
+    }
+  ]
+}

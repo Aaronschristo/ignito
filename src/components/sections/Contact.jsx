@@ -2,6 +2,7 @@
  * Contact.jsx
  * Contact form UI — fields: Name, Email, Subject, Message.
  * UI only (no backend). Framer-motion stagger reveal.
+ * Green accent replacing violet.
  */
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -25,6 +26,8 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
+const inputClass = 'px-4 py-3 rounded-xl bg-space-card border border-space-border text-text-primary font-body text-sm placeholder:text-text-faint focus:outline-none focus:border-nebula-green/60 focus:ring-1 focus:ring-nebula-green/40 transition-all'
+
 export function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
@@ -35,7 +38,6 @@ export function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // UI-only: just show a thank-you state
     setSubmitted(true)
   }
 
@@ -43,7 +45,7 @@ export function Contact() {
     <section id="contact" className="relative py-24 sm:py-32 bg-space-surface overflow-hidden">
       {/* Top accent */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-ignition-flame/30 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-nebula-violet/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-nebula-green/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
@@ -78,8 +80,8 @@ export function Contact() {
                   variants={itemVariants}
                   className="flex items-center gap-4 p-4 rounded-xl bg-space-card border border-space-border"
                 >
-                  <div className="p-2.5 rounded-lg bg-nebula-violet/10 border border-nebula-violet/20">
-                    <Icon size={18} className="text-nebula-violet" strokeWidth={1.75} />
+                  <div className="p-2.5 rounded-lg bg-nebula-green/10 border border-nebula-green/20">
+                    <Icon size={18} className="text-nebula-green" strokeWidth={1.75} />
                   </div>
                   <div>
                     <p className="font-body text-[11px] text-text-faint uppercase tracking-widest">{label}</p>
@@ -118,76 +120,26 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Name */}
                   <motion.div variants={itemVariants} className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-name" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">
-                      Name
-                    </label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      className="px-4 py-3 rounded-xl bg-space-card border border-space-border text-text-primary font-body text-sm placeholder:text-text-faint focus:outline-none focus:border-nebula-violet/60 focus:ring-1 focus:ring-nebula-violet/40 transition-all"
-                    />
+                    <label htmlFor="contact-name" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">Name</label>
+                    <input id="contact-name" name="name" type="text" required value={form.name} onChange={handleChange} placeholder="Your name" className={inputClass} />
                   </motion.div>
-
-                  {/* Email */}
                   <motion.div variants={itemVariants} className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-email" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">
-                      Email
-                    </label>
-                    <input
-                      id="contact-email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="you@email.com"
-                      className="px-4 py-3 rounded-xl bg-space-card border border-space-border text-text-primary font-body text-sm placeholder:text-text-faint focus:outline-none focus:border-nebula-violet/60 focus:ring-1 focus:ring-nebula-violet/40 transition-all"
-                    />
+                    <label htmlFor="contact-email" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">Email</label>
+                    <input id="contact-email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="you@email.com" className={inputClass} />
                   </motion.div>
                 </div>
 
-                {/* Subject */}
                 <motion.div variants={itemVariants} className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-subject" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">
-                    Subject
-                  </label>
-                  <input
-                    id="contact-subject"
-                    name="subject"
-                    type="text"
-                    required
-                    value={form.subject}
-                    onChange={handleChange}
-                    placeholder="Transmission subject"
-                    className="px-4 py-3 rounded-xl bg-space-card border border-space-border text-text-primary font-body text-sm placeholder:text-text-faint focus:outline-none focus:border-nebula-violet/60 focus:ring-1 focus:ring-nebula-violet/40 transition-all"
-                  />
+                  <label htmlFor="contact-subject" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">Subject</label>
+                  <input id="contact-subject" name="subject" type="text" required value={form.subject} onChange={handleChange} placeholder="Transmission subject" className={inputClass} />
                 </motion.div>
 
-                {/* Message */}
                 <motion.div variants={itemVariants} className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-message" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">
-                    Message
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    required
-                    rows={5}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Your message to Mission Control…"
-                    className="px-4 py-3 rounded-xl bg-space-card border border-space-border text-text-primary font-body text-sm placeholder:text-text-faint focus:outline-none focus:border-nebula-violet/60 focus:ring-1 focus:ring-nebula-violet/40 transition-all resize-none"
-                  />
+                  <label htmlFor="contact-message" className="font-body text-xs font-medium text-text-muted uppercase tracking-widest">Message</label>
+                  <textarea id="contact-message" name="message" required rows={5} value={form.message} onChange={handleChange} placeholder="Your message to Mission Control…" className={`${inputClass} resize-none`} />
                 </motion.div>
 
-                {/* Submit */}
                 <motion.div variants={itemVariants}>
                   <Button type="submit" variant="primary" className="w-full justify-center">
                     <Send size={15} strokeWidth={2} />

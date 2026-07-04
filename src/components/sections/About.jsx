@@ -51,8 +51,8 @@ export function About() {
   return (
     <section id="about" className="relative py-24 sm:py-32 bg-space-bg overflow-hidden">
       {/* Subtle violet glow top */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-nebula-violet/40 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-nebula-violet/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-nebula-green/40 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-nebula-green/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
@@ -77,7 +77,7 @@ export function About() {
         {/* Orbit divider */}
         <div className="flex items-center justify-center my-12 gap-3">
           <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-space-border" />
-          <Orbit size={18} className="text-nebula-violet" strokeWidth={1.5} />
+          <Orbit size={18} className="text-nebula-green" strokeWidth={1.5} />
           <div className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-space-border" />
         </div>
 

@@ -27,7 +27,7 @@ export function Footer() {
   return (
     <footer className="relative bg-space-surface border-t border-space-border/60">
       {/* Gradient top accent */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-nebula-violet to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-nebula-green to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-12">
@@ -73,7 +73,7 @@ export function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="p-2.5 rounded-lg bg-space-card border border-space-border text-text-muted hover:text-nebula-violet hover:border-nebula-violet/40 transition-all duration-200"
+                  className="p-2.5 rounded-lg bg-space-card border border-space-border text-text-muted hover:text-nebula-green hover:border-nebula-green/40 transition-all duration-200"
                 >
                   <Icon size={16} strokeWidth={1.75} />
                 </a>

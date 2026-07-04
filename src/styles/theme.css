@@ -11,12 +11,12 @@
   /* ── Backgrounds ─────────────────────────────────────────── */
   --color-space-bg: #05050F;
   --color-space-surface: #0B0B1E;
-  --color-space-border: #1E1E3F;
-  --color-space-card: #0E0E24;
+  --color-space-border: #1A2E1A;
+  --color-space-card: #0A1A0A;
 
   /* ── Accents ─────────────────────────────────────────────── */
-  --color-nebula-violet: #8B5CF6;
-  --color-nebula-violet-dim: #6D28D9;
+  --color-nebula-green: #22C55E;
+  --color-nebula-green-dim: #16A34A;
   --color-nebula-blue: #22D3EE;
   --color-nebula-blue-dim: #0891B2;
   --color-ignition-flame: #FB923C;
@@ -64,11 +64,11 @@ body {
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-nebula-violet-dim);
+  background: var(--color-nebula-green-dim);
 }
 
 /* ── Selection highlight ─────────────────────────────────── */
 ::selection {
-  background: var(--color-nebula-violet);
-  color: var(--color-text-primary);
+  background: var(--color-nebula-green);
+  color: var(--color-space-bg);
 }

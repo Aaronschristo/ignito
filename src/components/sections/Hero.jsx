@@ -39,7 +39,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-nebula-violet/30 bg-nebula-violet/8 backdrop-blur-sm"
+          className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-nebula-green/30 bg-nebula-green/8 backdrop-blur-sm"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-ignition-flame animate-pulse" />
           <span className="font-body text-xs font-semibold text-text-muted tracking-widest uppercase">
@@ -57,7 +57,7 @@ export function Hero() {
           <span className="block text-5xl sm:text-7xl lg:text-8xl text-text-primary">
             IGNITE
           </span>
-          <span className="block text-5xl sm:text-7xl lg:text-8xl bg-gradient-to-r from-ignition-flame via-ignition-glow to-nebula-violet bg-clip-text text-transparent">
+          <span className="block text-5xl sm:text-7xl lg:text-8xl bg-gradient-to-r from-ignition-flame via-ignition-glow to-nebula-green bg-clip-text text-transparent">
             THE FUTURE.
           </span>
         </motion.h1>
