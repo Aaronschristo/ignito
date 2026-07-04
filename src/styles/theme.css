@@ -1,0 +1,74 @@
+/* src/styles/theme.css */
+/* ─────────────────────────────────────────────────────────────
+   SINGLE SOURCE OF TRUTH — ALL design tokens live here.
+   Edit ONLY this file to re-theme the entire site.
+   Never hardcode a hex value or arbitrary Tailwind color in a component.
+   ───────────────────────────────────────────────────────────── */
+
+@import "tailwindcss";
+
+@theme {
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --color-space-bg: #05050F;
+  --color-space-surface: #0B0B1E;
+  --color-space-border: #1E1E3F;
+  --color-space-card: #0E0E24;
+
+  /* ── Accents ─────────────────────────────────────────────── */
+  --color-nebula-violet: #8B5CF6;
+  --color-nebula-violet-dim: #6D28D9;
+  --color-nebula-blue: #22D3EE;
+  --color-nebula-blue-dim: #0891B2;
+  --color-ignition-flame: #FB923C;
+  --color-ignition-flame-dim: #EA580C;
+  --color-ignition-glow: #FCD34D;
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --color-text-primary: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-text-faint: #475569;
+
+  /* ── Fonts ───────────────────────────────────────────────── */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ── Base resets & globals ───────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-space-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Custom scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-space-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-space-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-nebula-violet-dim);
+}
+
+/* ── Selection highlight ─────────────────────────────────── */
+::selection {
+  background: var(--color-nebula-violet);
+  color: var(--color-text-primary);
+}

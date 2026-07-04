@@ -1,0 +1,82 @@
+[
+  {
+    "id": "e001",
+    "title": "Zero-G Hackathon",
+    "category": "Hackathon",
+    "description": "A 24-hour mission to build innovative solutions for real-world problems. Form a crew of up to 4 and launch your ideas.",
+    "date": "2027-01-15",
+    "time": "09:00 AM",
+    "venue": "Mission Hub — Block A",
+    "icon": "Rocket"
+  },
+  {
+    "id": "e002",
+    "title": "AI Frontier Workshop",
+    "category": "Workshop",
+    "description": "Hands-on sessions on LLMs, computer vision, and generative AI. Guided by engineers from leading AI labs.",
+    "date": "2027-01-15",
+    "time": "11:00 AM",
+    "venue": "Lab Deck 3",
+    "icon": "Bot"
+  },
+  {
+    "id": "e003",
+    "title": "Orbital Robotics Challenge",
+    "category": "Competition",
+    "description": "Program autonomous bots to navigate a simulated lunar surface. Fastest traversal wins.",
+    "date": "2027-01-15",
+    "time": "02:00 PM",
+    "venue": "Arena — Ground Floor",
+    "icon": "Cpu"
+  },
+  {
+    "id": "e004",
+    "title": "Signal & Systems Talk",
+    "category": "Talk",
+    "description": "A keynote on the future of satellite communication and signal processing by a ISRO scientist.",
+    "date": "2027-01-15",
+    "time": "04:00 PM",
+    "venue": "Auditorium",
+    "icon": "Satellite"
+  },
+  {
+    "id": "e005",
+    "title": "Deep Space Devops",
+    "category": "Workshop",
+    "description": "Containerization, CI/CD pipelines, and cloud-native deployment strategies for production-scale systems.",
+    "date": "2027-01-16",
+    "time": "10:00 AM",
+    "venue": "Lab Deck 1",
+    "icon": "Orbit"
+  },
+  {
+    "id": "e006",
+    "title": "Telescope Talks: Web3",
+    "category": "Talk",
+    "description": "Demystifying blockchain, decentralized apps, and the actual engineering behind the hype.",
+    "date": "2027-01-16",
+    "time": "12:00 PM",
+    "venue": "Seminar Hall B",
+    "icon": "Telescope"
+  },
+  {
+    "id": "e007",
+    "title": "Radar CTF",
+    "category": "Hackathon",
+    "description": "Capture-the-Flag cybersecurity challenge. Test your offensive and defensive security skills.",
+    "date": "2027-01-16",
+    "time": "02:00 PM",
+    "venue": "Cyber Lab — Block C",
+    "icon": "Radar"
+  },
+  {
+    "id": "e008",
+    "title": "Paper Presentation: Future Tech",
+    "category": "Talk",
+    "description": "Present your research paper on emerging tech — quantum computing, neuromorphic chips, or space propulsion.",
+    "date": "2027-01-16",
+    "time": "03:30 PM",
+    "venue": "Conference Room 2",
+    "icon": "Satellite"
+  }
+]

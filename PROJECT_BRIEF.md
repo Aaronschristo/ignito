@@ -223,6 +223,10 @@ Log every time this brief changes and why — this is what keeps it trustworthy 
 | Date | Change |
 |---|---|
 | 2026-07-04 | Initial brief created: Vite + React + Tailwind v4, configurable color tokens via `@theme`, asset policy (ask, don't generate), living-brief workflow rules established. |
+| 2026-07-04 | **Phase 0–6 build started.** Scaffolding decision: Vite CLI could not run non-interactively in existing directory — project files created manually matching the `react` template output. Stack confirmed: Vite 6.4.3, React 19.1, Tailwind CSS v4.3.2 (`@tailwindcss/vite`), framer-motion 12.42.2, lucide-react 1.23.0. |
+| 2026-07-04 | Fest date placeholder set to **2027-01-15** in `CountdownTimer.jsx` — update when real date confirmed. |
+| 2026-07-04 | Optional sections (Schedule, Speakers, Gallery, Sponsors, FAQ) deferred; built Required + About sections per brief priority table. |
+| 2026-07-04 | `Github` icon not exported by lucide-react v1.23 — replaced with `GitBranch` in Footer socials. |
 
 ---
 
