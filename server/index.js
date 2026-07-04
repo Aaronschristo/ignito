@@ -21,8 +21,8 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import Database from 'better-sqlite3'
 
-const __dirname  = path.dirname(fileURLToPath(import.meta.url))
-const DB_FILE    = path.join(__dirname, 'ignito.db')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const DB_FILE = path.join(__dirname, 'ignito.db')
 const JWT_SECRET = 'ignito-secret-2027' // hardcoded for simplicity
 
 // ── Database setup ─────────────────────────────────────────────
@@ -66,8 +66,8 @@ initDb()
 
 const stmts = {
   findByEmail: db.prepare('SELECT * FROM users WHERE email = ?'),
-  findById:    db.prepare('SELECT id, name, email FROM users WHERE id = ?'),
-  insertUser:  db.prepare('INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'),
+  findById: db.prepare('SELECT id, name, email FROM users WHERE id = ?'),
+  insertUser: db.prepare('INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)'),
 
   getEventRegs: db.prepare(
     'SELECT event_id FROM event_registrations WHERE user_id = ?'
@@ -93,7 +93,7 @@ const stmts = {
 
 /** Return { events: string[], competitions: string[] } for a user id. */
 function getRegistrations(userId) {
-  const events       = stmts.getEventRegs.all(userId).map((r) => r.event_id)
+  const events = stmts.getEventRegs.all(userId).map((r) => r.event_id)
   const competitions = stmts.getCompRegs.all(userId).map((r) => r.competition_id)
   return { events, competitions }
 }
