@@ -29,6 +29,41 @@
         "events": [],
         "competitions": []
       }
+    },
+    {
+      "id": "1783128890031",
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "$2b$10$LD9VnjPvA6Ao8UZS6NTVR.mxrYlhf/QKJqnAqZMxUo0jiR3Vh6VeS",
+      "registrations": {
+        "events": [],
+        "competitions": []
+      }
+    },
+    {
+      "id": "1783129027602",
+      "name": "aaroTest Usr 2",
+      "email": "test2@example.com",
+      "password": "$2b$10$Ah5PVtUuuFJzLQtBMlmw7.9fVFJA6f5L4BGMEz321piR3kjOYXUFy",
+      "registrations": {
+        "events": [],
+        "competitions": []
+      }
+    },
+    {
+      "id": "1783129158991",
+      "name": "aaron",
+      "email": "aaron@me.com",
+      "password": "$2b$10$5/DF19ZhCgTLfSJXmD7wieu/7BiV5KOG/Isk5n1kZ0bm01nl/pyZG",
+      "registrations": {
+        "events": [
+          "e002"
+        ],
+        "competitions": [
+          "c002",
+          "c001"
+        ]
+      }
     }
   ]
 }

@@ -48,7 +48,7 @@ function authMiddleware(req, res, next) {
 }
 
 const CORS_OPTIONS = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: true, // Allow any origin (fixes issues if Vite starts on port 5174 instead of 5173)
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
