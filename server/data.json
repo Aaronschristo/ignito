@@ -61,8 +61,21 @@
         ],
         "competitions": [
           "c002",
-          "c001"
+          "c001",
+          "c003"
         ]
+      }
+    },
+    {
+      "id": "1783129596931",
+      "name": "Test User",
+      "email": "test@t.com",
+      "password": "$2b$10$rpn.GPQWGh5ekGaP2NHtDeQ2QnHUnUVK1YA.r9u/FvcL6mBw5CVDm",
+      "registrations": {
+        "events": [
+          "e001"
+        ],
+        "competitions": []
       }
     }
   ]
