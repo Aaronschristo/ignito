@@ -1,90 +1,15 @@
 {
   "users": [
     {
-      "id": "1783127879250",
-      "name": "Test User",
-      "email": "test@ignito.com",
-      "password": "$2b$10$u6FzGFjrCig1Xcb.6zUbHOydzUkhhQvyvlC3beLUhhUA05XV6aAqW",
-      "registrations": {
-        "events": [],
-        "competitions": []
-      }
-    },
-    {
-      "id": "1783127906305",
-      "name": "Test",
-      "email": "t@t.com",
-      "password": "$2b$10$O5H6RW7GqBcMsM82eyqrbeh0h7vVo0TTS867Cu9jsTc3sbqlk.qIG",
-      "registrations": {
-        "events": [],
-        "competitions": []
-      }
-    },
-    {
-      "id": "1783128307957",
+      "id": "1783147712621",
       "name": "Aaron",
-      "email": "aaron@test.com",
-      "password": "$2b$10$3hcGb6QIFRRaNeNL4X2TQ.rwufc8zQnt0nT9fQCb.Rk7GvuQpe6zu",
-      "registrations": {
-        "events": [],
-        "competitions": []
-      }
-    },
-    {
-      "id": "1783128890031",
-      "name": "Test User",
-      "email": "test@example.com",
-      "password": "$2b$10$LD9VnjPvA6Ao8UZS6NTVR.mxrYlhf/QKJqnAqZMxUo0jiR3Vh6VeS",
-      "registrations": {
-        "events": [],
-        "competitions": []
-      }
-    },
-    {
-      "id": "1783129027602",
-      "name": "aaroTest Usr 2",
-      "email": "test2@example.com",
-      "password": "$2b$10$Ah5PVtUuuFJzLQtBMlmw7.9fVFJA6f5L4BGMEz321piR3kjOYXUFy",
-      "registrations": {
-        "events": [],
-        "competitions": []
-      }
-    },
-    {
-      "id": "1783129158991",
-      "name": "aaron",
       "email": "aaron@me.com",
-      "password": "$2b$10$5/DF19ZhCgTLfSJXmD7wieu/7BiV5KOG/Isk5n1kZ0bm01nl/pyZG",
+      "password": "$2b$10$s8iY6B1j7VHTmi6Ale4Y9eerhV4Ivu96TMwNTfkSeDKg3VAyw2XMC",
       "registrations": {
         "events": [
-          "e002"
+          "e002",
+          "e003"
         ],
-        "competitions": [
-          "c002",
-          "c001",
-          "c003"
-        ]
-      }
-    },
-    {
-      "id": "1783129596931",
-      "name": "Test User",
-      "email": "test@t.com",
-      "password": "$2b$10$rpn.GPQWGh5ekGaP2NHtDeQ2QnHUnUVK1YA.r9u/FvcL6mBw5CVDm",
-      "registrations": {
-        "events": [
-          "e001"
-        ],
-        "competitions": []
-      }
-    },
-    {
-      "id": "1783130958616",
-      "name": "Aaron S Christo",
-      "email": "aronschristo@gmail.com",
-      "password": "$2b$10$tyBfKIM6RGu5r5.H/2jSgeJ/cal8VeFS5PGHqOZQit.1LEpA7P3C.",
-      "registrations": {
-        "events": [],
         "competitions": []
       }
     }

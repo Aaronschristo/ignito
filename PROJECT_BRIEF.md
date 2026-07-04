@@ -233,6 +233,7 @@ Log every time this brief changes and why — this is what keeps it trustworthy 
 | 2026-07-04 | **Starfield motion**: Reworked the hero canvas into a layered perspective starfield. Stars slowly expand from a central vanishing point with subtle trails and brand-token color variation; reduced-motion users receive a static field. |
 | 2026-07-04 | **Registration functional**: Event and Competition cards now have Register buttons. Registered state stored per-user on backend. Cards turn green and show ✓ checkmark when registered. Unregistered users prompted to login. |
 | 2026-07-04 | **Documentation**: Overwrote the placeholder `README.md` with detailed step-by-step instructions for running the frontend and backend simultaneously, including Vercel deployment notes. |
+| 2026-07-04 | **SQLite migration**: Replaced flat `server/data.json` store with `server/ignito.db` (SQLite via `better-sqlite3`). Schema: 3 tables — `users`, `event_registrations`, `competition_registrations`. First-run migration copies all existing `data.json` users automatically. WAL mode enabled. `ignito.db` added to `.gitignore`. API surface unchanged. |
 
 ---
 
