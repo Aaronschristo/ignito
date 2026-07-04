@@ -185,7 +185,7 @@ export function Navbar() {
               </ul>
 
               <a
-                href="#contact"
+                href="#competitions"
                 onClick={handleLinkClick}
                 className="mt-4 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-ignition-flame text-space-bg font-body text-sm font-semibold shadow-[0_0_16px_rgba(251,146,60,0.3)]"
               >
