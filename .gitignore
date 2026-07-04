@@ -39,3 +39,6 @@ server/ignito.db-wal
 # Vite specific
 .temp
 .tmp
+
+# tests
+test-api.js
