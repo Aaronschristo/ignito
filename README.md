@@ -15,7 +15,14 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine (v18
    npm install
    ```
 
-2. **Start the Backend API Server**
+2. **Environment Variables**
+   Create a `.env` file by copying the example:
+   ```bash
+   cp .env.example .env
+   ```
+   Open `.env` and fill in your specific values if needed.
+
+3. **Start the Backend API Server**
    The backend handles user accounts and saves registration data. In your terminal, run:
    ```bash
    npm run server

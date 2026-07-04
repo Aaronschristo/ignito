@@ -21,7 +21,6 @@ dist-ssr
 .env.production
 
 # Backend Local Database
-server/data.json
 server/ignito.db
 server/ignito.db-shm
 server/ignito.db-wal

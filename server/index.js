@@ -20,10 +20,13 @@ import jwt from 'jsonwebtoken'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import Database from 'better-sqlite3'
+import dotenv from 'dotenv'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const DB_FILE = path.join(__dirname, 'ignito.db')
-const JWT_SECRET = 'ignito-secret-2027' // hardcoded for simplicity
+dotenv.config()
+
+const __dirname  = path.dirname(fileURLToPath(import.meta.url))
+const DB_FILE    = path.join(__dirname, 'ignito.db')
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-if-missing-in-prod'
 
 // ── Database setup ─────────────────────────────────────────────
 
@@ -209,7 +212,7 @@ app.delete('/api/register/competition/:id', authMiddleware, (req, res) => {
 })
 
 // ── Start ──────────────────────────────────────────────────────
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-  console.log(`🚀 IGNITO API running on http://localhost:${PORT}`)
+  console.log(`🚀 IGNITO API running on port ${PORT}`)
 })
