@@ -76,7 +76,7 @@ IGNITO literally means *ignition* — the identity leans into a **launch / missi
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 ```
 
-**Motion:** starfield background (canvas or CSS, not an image — see §7), scroll-reveal via `whileInView`, card hover tilt + glow, all wrapped to respect `prefers-reduced-motion`.
+**Motion:** perspective canvas starfield with a slow forward-flight effect (not an image — see §7), scroll-reveal via `whileInView`, card hover tilt + glow, all wrapped to respect `prefers-reduced-motion`.
 
 ---
 
@@ -230,6 +230,7 @@ Log every time this brief changes and why — this is what keeps it trustworthy 
 | 2026-07-04 | **Color change**: Removed all `nebula-violet` (#8B5CF6) tokens — replaced with `nebula-green` (#22C55E / #16A34A). Single-token change in `theme.css` propagated everywhere. |
 | 2026-07-04 | **Auth added**: `AuthContext` + `AuthModal` (login/register tabs). Navbar shows Login button + user avatar dropdown. JWT stored in localStorage. |
 | 2026-07-04 | **Registration UX**: Added a register-only confirm-password field with live mismatch feedback and client-side submission validation. The confirmation value is not sent to the API. |
+| 2026-07-04 | **Starfield motion**: Reworked the hero canvas into a layered perspective starfield. Stars slowly expand from a central vanishing point with subtle trails and brand-token color variation; reduced-motion users receive a static field. |
 | 2026-07-04 | **Registration functional**: Event and Competition cards now have Register buttons. Registered state stored per-user on backend. Cards turn green and show ✓ checkmark when registered. Unregistered users prompted to login. |
 | 2026-07-04 | **Documentation**: Overwrote the placeholder `README.md` with detailed step-by-step instructions for running the frontend and backend simultaneously, including Vercel deployment notes. |
 
